@@ -335,3 +335,30 @@ body {
   line-height: 100px;
   padding-right: 10px;
 }
+
+/* portrait */
+.portrait {
+    float: left;
+    margin-right: 8px;
+}
+
+.portrait > .frame {
+    border: 1px solid #aaa;
+    padding: 5px;
+}
+
+.portrait > .frame img {
+    width: 240px;
+}
+
+@media only screen and (max-width: 480px) {
+    .portrait {
+        float: none;
+        width: 260px;
+        margin: 10px auto;
+    }
+
+    .portrait > .frame img {
+        width: 100%;
+    }
+}
