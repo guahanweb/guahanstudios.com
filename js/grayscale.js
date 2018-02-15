@@ -40,7 +40,7 @@ var map = null;
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', init);
 google.maps.event.addDomListener(window, 'resize', function() {
-    map.setCenter(new google.maps.LatLng(47.132088, -122.325690));
+    map.setCenter(new google.maps.LatLng(35.954824, -78.828943));
 });
 
 function init() {
@@ -179,7 +179,7 @@ function init() {
 
     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
     var image = 'img/map-marker.png';
-    var myLatLng = new google.maps.LatLng(47.132088, -122.325690);
+    var myLatLng = new google.maps.LatLng(35.954824, -78.828943);
     var beachMarker = new google.maps.Marker({
         position: myLatLng,
         map: map,
