@@ -6,22 +6,25 @@
 
 // jQuery to collapse the navbar on scroll
 function collapseNavbar() {
-    if ($(".navbar").offset().top > 50) {
+    var offset = $('main').scrollTop();
+    if (offset > 50) {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
     } else {
         $(".navbar-fixed-top").removeClass("top-nav-collapse");
     }
 }
 
-$(window).scroll(collapseNavbar);
+$('main').scroll(collapseNavbar);
 $(document).ready(collapseNavbar);
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
+        var pos = $($anchor.attr('href')).offset().top + $('main').scrollTop();
+
+        $('main').stop().animate({
+            scrollTop: pos
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
@@ -48,7 +51,7 @@ function init() {
         zoom: 15,
 
         // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(47.132088, -122.325690), // New York
+        center: new google.maps.LatLng(35.954877, -78.828963), // New York
 
         // Disables the default Google Maps UI components
         disableDefaultUI: true,
