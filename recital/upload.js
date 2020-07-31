@@ -77,7 +77,7 @@ function init() {
     formData.append('student', data.student);
     formData.append('file', data.file);
 
-    fetch('http://100.25.192.229/upload', {
+    fetch('https://uploads.guahanstudios.com/upload', {
         method: 'POST',
         headers: {
           authorization: `BEARER ${btoa(data.pw)}`
