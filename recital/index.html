@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Recital Upload | Guahan Music Studio</title>
+  <link type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="all" />
+  <link type="text/css" href="/recital/upload.css" rel="stylesheet" media="all" />
+</head>
+<body>
+  <main>
+    <article>
+      <header class="page-header">
+        <h1>Recital Upload Form</h1>
+      </header>
+      <section id="upload">
+        <div class="alert-wrapper">
+          <div id="successNotice" class="alert alert-success hidden">
+            Upload successful. Thank you for your submission!
+          </div>
+          <div id="passwordError" class="alert alert-danger hidden">
+            Please provide a valid password
+          </div>
+          <div id="studentError" class="alert alert-danger hidden">
+            Please enter the student name for this video
+          </div>
+          <div id="fileError" class="alert alert-danger hidden">
+            Please provide a video file to upload
+          </div>
+          <div id="uploadError" class="alert alert-danger hidden">
+            Erorr uploading file
+          </div>
+        </div>
+        <form class="needs-validation">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" required />
+            <small id="passwordHelp" class="form-text text-muted">Enter the password provided by your instructor</small>
+          </div>
+          <div class="form-group">
+            <label for="password">Student&apos;s Name</label>
+            <input type="text" class="form-control" id="student" required />
+          </div>
+          <div class="form-group">
+            <label for="filePicker">Choose your video</label>
+            <input type="file" class="form-control-file" id="filePicker" name="file" accept="video/*" aria-describedby="uploadHelp" required />
+            <small id="uploadHelp" class="form-text text-muted">Please let us know if you have any questions about format</small>
+          </div>
+          <div class="form-group">
+            <button type="submit" id="submit" class="btn btn-primary">Upload</button>
+          </div>
+        </form>
+      </section>
+    </article>
+  </main>
+  <script type="text/javascript" src="/recital/upload.js"></script>
+</body>
+</html>
