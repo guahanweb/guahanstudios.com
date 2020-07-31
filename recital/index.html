@@ -19,6 +19,9 @@
           <div id="passwordError" class="alert alert-danger hidden">
             Please provide a valid password
           </div>
+          <div id="studentError" class="alert alert-danger hidden">
+            Please enter the student name for this video
+          </div>
           <div id="fileError" class="alert alert-danger hidden">
             Please provide a video file to upload
           </div>
@@ -31,6 +34,10 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" required />
             <small id="passwordHelp" class="form-text text-muted">Enter the password provided by your instructor</small>
+          </div>
+          <div class="form-group">
+            <label for="password">Student&apos;s Name</label>
+            <input type="text" class="form-control" id="student" required />
           </div>
           <div class="form-group">
             <label for="filePicker">Choose your video</label>

@@ -1,9 +1,15 @@
 function init() {
   let loading = false;
+
   let fileInput = document.getElementById('filePicker');
   let fileError = document.getElementById('fileError');
+
   let passwordInput = document.getElementById('password');
   let passwordError = document.getElementById('passwordError');
+
+  let studentInput = document.getElementById('student');
+  let studentError = document.getElementById('studentError');
+
   let submitInput = document.getElementById('submit');
   let successNotice = document.getElementById('successNotice');
   let uploadError = document.getElementById('uploadError');
@@ -24,6 +30,7 @@ function init() {
     uploadError.classList.add('hidden');
 
     const pw   = passwordInput.value || '';
+    const student = studentInput.value || '';
     const file = fileInput.files[0] || null;
 
     if (!pw) {
@@ -31,6 +38,13 @@ function init() {
       isError = true;
     } else {
       passwordError.classList.add('hidden');
+    }
+
+    if (!student) {
+      studentError.classList.remove('hidden');
+      isError = true;
+    } else {
+      studentError.classList.add('hidden');
     }
 
     if (!file) {
@@ -41,7 +55,7 @@ function init() {
     }
 
     if (!isError) {
-      handleUpload({ pw, file });
+      handleUpload({ pw, student, file });
     }
   }
 
@@ -60,8 +74,10 @@ function init() {
   function handleUpload(data) {
     setProcessing();
     const formData = new FormData();
+    formData.append('student', data.student);
     formData.append('file', data.file);
-    fetch('', {
+
+    fetch('http://100.25.192.229/upload', {
         method: 'POST',
         headers: {
           authorization: `BEARER ${btoa(data.pw)}`
@@ -71,7 +87,18 @@ function init() {
       .then(response => response.json())
       .then(json => {
         // assume success
-        successNotice.classList.remove('hidden');
+        if (json.statusCode == 200) {
+          successNotice.classList.remove('hidden');
+
+          // clear out the form
+          passwordInput.value = '';
+          studentInput.value = '';
+          fileInput.value = '';
+        } else if (json.statusCode == 401) {
+          passwordError.classList.remove('hidden');
+        } else {
+          uploadError.classList.remove('hidden');
+        }
       })
       .catch(err => {
         uploadError.classList.remove('hidden');
